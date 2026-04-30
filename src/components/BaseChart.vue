@@ -13,7 +13,9 @@ defineOptions({
 })
 
 interface Props {
-  option: EChartsOption
+  option?: EChartsOption
+  type?: string
+  title?: string
   width?: string
   height?: string
   autoResize?: boolean
@@ -107,9 +109,24 @@ const defaultConfig: EChartsOption = {
   }
 }
 
-// 深度合并配置，优先使用 props.option
+// 深度合并配置: defaultConfig → title → type → option，用户的 option 优先级最高
 const mergedOption = computed<EChartsOption>(() => {
-  return merge({}, defaultConfig, props.option)
+  const titleOption = props.title ? { title: { text: props.title } } : {}
+  const typeOption = props.type ? {
+    series: (props.option?.series as any[])?.map((item) => ({
+      ...item,
+      type: props.type
+    })) || []
+  } : {}
+
+  // 检查 series 类型，饼图和仪表盘不需要坐标轴
+  const series = props.option?.series || []
+  const hasNoAxis = (series as any[]).some((item: any) =>
+    ['pie', 'gauge'].includes(item?.type)
+  )
+  const axisOption = hasNoAxis ? { xAxis: { show: false }, yAxis: { show: false } } : {}
+
+  return merge({}, defaultConfig, titleOption, axisOption, typeOption, props.option)
 })
 
 const initChart = () => {

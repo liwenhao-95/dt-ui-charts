@@ -35,7 +35,7 @@
     "vue-chart",
     "dataviz"
   ],
-  "author": "",
+  "author": "liwh",
   "license": "MIT",
   "peerDependencies": {
     "echarts": "^6.0.0",

@@ -6,10 +6,10 @@ title: MixChart 折柱混合图
 import { MixChart } from 'vue3-echarts-charts'
 
 const chartData = {
-  xAxis: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+  xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
   series: [
-    { name: '蒸发量', type: 'bar', data: [120, 132, 101, 134, 90, 230, 210] },
-    { name: '平均温度', type: 'line', data: [22, 182, 91, 24, 120, 132, 91], yAxisIndex: 1 }
+    { type: 'bar', name: '蒸发量', data: [120, 132, 101, 134, 90, 230, 210] },
+    { type: 'line', name: '平均温度', data: [22, 182, 91, 24, 120, 132, 91], yAxisIndex: 1 }
   ]
 }
 </script>
@@ -18,23 +18,23 @@ const chartData = {
 
 ## 基础用法
 
-<MixChart v-bind="chartData" />
+<MixChart :option="chartData" />
 
 ```vue
 <script setup>
 import { MixChart } from 'vue3-echarts-charts'
 
 const chartData = {
-  xAxis: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+  xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
   series: [
-    { name: '蒸发量', type: 'bar', data: [120, 132, 101, 134, 90, 230, 210] },
-    { name: '平均温度', type: 'line', data: [22, 182, 91, 24, 120, 132, 91], yAxisIndex: 1 }
+    { type: 'bar', name: '蒸发量', data: [120, 132, 101, 134, 90, 230, 210] },
+    { type: 'line', name: '平均温度', data: [22, 182, 91, 24, 120, 132, 91], yAxisIndex: 1 }
   ]
 }
 </script>
 
 <template>
-  <MixChart v-bind="chartData" />
+  <MixChart :option="chartData" />
 </template>
 ```
 
@@ -44,22 +44,11 @@ const chartData = {
 
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
-| xAxis | x轴数据 | `string[]` | `[]` |
-| series | 系列数据 | `SeriesItem[]` | `[]` |
+| option | ECharts 配置项 | `EChartsOption` | `{}` |
+| title | 图表标题 | `string` | - |
 | width | 图表宽度 | `string` | `'100%'` |
 | height | 图表高度 | `string` | `'300px'` |
 | autoResize | 自动调整大小 | `boolean` | `true` |
-
-### SeriesItem 类型
-
-```ts
-interface SeriesItem {
-  name: string
-  data: number[]
-  type: 'line' | 'bar'
-  yAxisIndex?: number
-}
-```
 
 ### SeriesItem 属性
 
