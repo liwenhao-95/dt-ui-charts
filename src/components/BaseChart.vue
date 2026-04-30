@@ -1,0 +1,175 @@
+<template>
+  <div ref="chartRef" :style="{ width: width, height: height }"></div>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue'
+import * as echarts from 'echarts'
+import type { EChartsOption } from 'echarts'
+import { merge } from 'lodash-es'
+
+defineOptions({
+  name: 'BaseChart'
+})
+
+interface Props {
+  option: EChartsOption
+  width?: string
+  height?: string
+  autoResize?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  width: '100%',
+  height: '300px',
+  autoResize: true
+})
+
+const chartRef = ref<HTMLDivElement>()
+let chartInstance: echarts.ECharts | null = null
+
+// 内置默认配置
+const defaultConfig: EChartsOption = {
+  color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73D13D', '#36CBCB', '#FFA940', '#FF4D4F'],
+  tooltip: {
+    trigger: 'item',
+    textStyle: {
+      fontSize: 14,
+      color: '#333'
+    },
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    borderColor: '#e5e5e5',
+    borderWidth: 1,
+    padding: [10, 15]
+  },
+  legend: {
+    itemWidth: 14,
+    itemHeight: 8,
+    itemGap: 20,
+    textStyle: {
+      fontSize: 13,
+      color: '#666'
+    }
+  },
+  xAxis: {
+    axisLine: {
+      lineStyle: {
+        color: '#e5e5e5'
+      }
+    },
+    axisLabel: {
+      color: '#666',
+      fontSize: 12
+    },
+    axisTick: {
+      lineStyle: {
+        color: '#e5e5e5'
+      }
+    }
+  },
+  yAxis: {
+    axisLine: {
+      lineStyle: {
+        color: '#e5e5e5'
+      }
+    },
+    axisLabel: {
+      color: '#666',
+      fontSize: 12
+    },
+    axisTick: {
+      lineStyle: {
+        color: '#e5e5e5'
+      }
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#f0f0f0',
+        type: 'dashed'
+      }
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  series: {
+    label: {
+      show: false
+    },
+    emphasis: {
+      label: {
+        show: false
+      }
+    }
+  }
+}
+
+// 深度合并配置，优先使用 props.option
+const mergedOption = computed<EChartsOption>(() => {
+  return merge({}, defaultConfig, props.option)
+})
+
+const initChart = () => {
+  if (!chartRef.value) return
+
+  chartInstance = echarts.init(chartRef.value)
+  chartInstance.setOption(mergedOption.value)
+}
+
+const updateChart = () => {
+  if (chartInstance) {
+    chartInstance.setOption(mergedOption.value, true)
+  }
+}
+
+const resizeChart = () => {
+  chartInstance?.resize()
+}
+
+const handleResize = () => {
+  if (props.autoResize) {
+    resizeChart()
+  }
+}
+
+let resizeObserver: ResizeObserver | null = null
+
+onMounted(() => {
+  nextTick(() => {
+    initChart()
+
+    if (props.autoResize && chartRef.value) {
+      resizeObserver = new ResizeObserver(handleResize)
+      resizeObserver.observe(chartRef.value)
+    }
+
+    window.addEventListener('resize', handleResize)
+  })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+  resizeObserver?.disconnect()
+  chartInstance?.dispose()
+})
+
+watch(
+  () => props.option,
+  () => {
+    nextTick(() => {
+      updateChart()
+    })
+  },
+  { deep: true }
+)
+</script>
+
+<style scoped>
+div {
+  width: 100%;
+  height: 100%;
+}
+</style>
