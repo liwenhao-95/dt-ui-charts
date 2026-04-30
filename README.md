@@ -35,11 +35,19 @@ app.mount('#app')
 
 ```vue
 <template>
-  <LineChart :x-axis="xAxisData" :series="seriesData" />
+  <BarChart :option="chartOption" title="销售数据" width="500px" height="300px" />
 </template>
 
 <script setup lang="ts">
-import { LineChart } from 'vue3-echarts-charts'
+import { BarChart } from 'vue3-echarts-charts'
+
+const chartOption = {
+  xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
+  series: [
+    { name: '销量', data: [120, 200, 150, 80, 70, 110, 130] },
+    { name: '利润', data: [50, 100, 80, 60, 40, 70, 90] }
+  ]
+}
 </script>
 ```
 
@@ -50,6 +58,7 @@ import { LineChart } from 'vue3-echarts-charts'
 - PieChart - 饼图
 - ScatterChart - 散点图
 - GaugeChart - 仪表盘
+- MixChart - 折柱混合图
 
 ## 开发
 
