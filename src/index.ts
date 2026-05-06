@@ -1,7 +1,14 @@
 import type { App } from 'vue'
+import * as echarts from 'echarts'
+import * as themes from './themes'
 
 export * from './components'
 export * from './types'
+export { themes }
+
+// 注册内置主题
+echarts.registerTheme('default', themes.defaultTheme)
+echarts.registerTheme('dark', themes.darkTheme)
 
 import BaseChart from './components/BaseChart.vue'
 import LineChart from './components/LineChart.vue'

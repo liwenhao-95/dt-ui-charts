@@ -12,8 +12,11 @@ defineOptions({
   name: 'BaseChart'
 })
 
+type ThemeName = 'default' | 'dark'
+
 interface Props {
   option?: EChartsOption
+  theme?: ThemeName
   type?: string
   title?: string
   width?: string
@@ -22,6 +25,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  theme: 'default',
   width: '100%',
   height: '300px',
   autoResize: true
@@ -145,7 +149,7 @@ const mergedOption = computed<EChartsOption>(() => {
 const initChart = () => {
   if (!chartRef.value) return
 
-  chartInstance = echarts.init(chartRef.value)
+  chartInstance = echarts.init(chartRef.value, props.theme)
   chartInstance.setOption(mergedOption.value)
 }
 
