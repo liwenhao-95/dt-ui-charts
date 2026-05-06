@@ -1,14 +1,17 @@
 # vue3-echarts-charts
 
+[![npm](https://img.shields.io/npm/v/vue3-echarts-charts)](https://www.npmjs.com/package/vue3-echarts-charts)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 基于 Vue 3 + ECharts 6.0 的图表组件库，兼容 Windows 7 系统。
 
 ## 特性
 
-- 🎯 多种图表类型：折线图、柱状图、饼图、散点图、仪表盘
-- 📦 轻量级：基于 ECharts 6.0，性能优异
-- 🔧 易于使用：简洁的 API 设计
-- 📥 按需导入：支持单独导入，减小打包体积
-- 💻 兼容 Windows 7
+- 🎯 **多种图表类型**：折线图、柱状图、饼图、散点图、仪表盘、混合图
+- 📦 **轻量级**：基于 ECharts 6.0，性能优异
+- 🔧 **易于使用**：简洁的 API 设计
+- 📥 **按需导入**：支持单独导入，减小打包体积
+- 💻 **兼容 Windows 7**
 
 ## 安装
 
@@ -53,12 +56,24 @@ const chartOption = {
 
 ## 图表组件
 
-- LineChart - 折线图
-- BarChart - 柱状图
-- PieChart - 饼图
-- ScatterChart - 散点图
-- GaugeChart - 仪表盘
-- MixChart - 折柱混合图
+| 组件 | 说明 |
+|------|------|
+| LineChart | 折线图，适用于趋势展示 |
+| BarChart | 柱状图，适用于对比分析 |
+| PieChart | 饼图，适用于占比展示 |
+| ScatterChart | 散点图，适用于分布分析 |
+| GaugeChart | 仪表盘，适用于指标展示 |
+| MixChart | 混合图，支持折柱混合展示 |
+
+### Props
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| option | ECharts 配置项 | `EChartsOption` | `{}` |
+| title | 图表标题 | `string` | - |
+| width | 图表宽度 | `string` | `'100%'` |
+| height | 图表高度 | `string` | `'300px'` |
+| autoResize | 自动调整大小 | `boolean` | `true` |
 
 ## 开发
 
@@ -71,6 +86,12 @@ npm run docs:dev
 
 # 构建库
 npm run build:lib
+
+# 运行测试
+npm run test:run
+
+# 代码检查
+npm run lint
 ```
 
 ## 浏览器支持
