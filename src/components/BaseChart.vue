@@ -34,7 +34,10 @@ let chartInstance: echarts.ECharts | null = null
 const defaultConfig: EChartsOption = {
   color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73D13D', '#36CBCB', '#FFA940', '#FF4D4F'],
   tooltip: {
-    trigger: 'item',
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    },
     textStyle: {
       fontSize: 14,
       color: '#333'
@@ -55,6 +58,10 @@ const defaultConfig: EChartsOption = {
     }
   },
   xAxis: {
+    type: 'category',
+    axisPointer: {
+      type: 'shadow'
+    },
     axisLine: {
       lineStyle: {
         color: '#e5e5e5'

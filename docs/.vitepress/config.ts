@@ -12,6 +12,12 @@ export default defineConfig({
 
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
 
+  vite: {
+    server: {
+      port: 5000
+    }
+  },
+
   themeConfig: {
     logo: '/favicon.ico',
 
