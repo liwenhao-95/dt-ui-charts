@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "Running pre-commit hook..."
+
+# 运行 lint-staged
+npx lint-staged
+
+if [ $? -eq 0 ]; then
+  echo "Pre-commit checks passed!"
+else
+  echo "Pre-commit checks failed!"
+  exit 1
+fi
