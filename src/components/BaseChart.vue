@@ -45,6 +45,7 @@ const defaultConfig: EChartsOption = {
     padding: [10, 15]
   },
   legend: {
+    top: 0,
     itemWidth: 14,
     itemHeight: 8,
     itemGap: 20,
