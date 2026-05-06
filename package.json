@@ -28,8 +28,7 @@
     "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.ts,.tsx,.cts,.mts --fix",
     "type-check": "vue-tsc --noEmit",
     "test": "vitest",
-    "test:run": "vitest run",
-    "prepare": "husky install"
+    "test:run": "vitest run"
   },
   "lint-staged": {
     "*.{vue,ts,tsx,js,jsx,cjs,mts,cts}": [
