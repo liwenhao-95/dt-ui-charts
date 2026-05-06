@@ -1,6 +1,6 @@
 {
   "name": "vue3-echarts-charts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "A Vue 3 chart component library based on ECharts 6.0, compatible with Windows 7",
   "main": "./dist/index.js",
