@@ -2,6 +2,7 @@
   <BaseChart
     :option="mergedOption"
     :title="title"
+    :theme="theme"
     :width="width"
     :height="height"
     :auto-resize="autoResize"

@@ -6,6 +6,7 @@
     :width="width"
     :height="height"
     :auto-resize="autoResize"
+    :theme="theme"
   />
 </template>
 

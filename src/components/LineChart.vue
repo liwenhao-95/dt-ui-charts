@@ -3,6 +3,7 @@
     type="line"
     :option="option"
     :title="title"
+    :theme="theme"
     :width="width"
     :height="height"
     :auto-resize="autoResize"
@@ -17,7 +18,7 @@ defineOptions({
   name: 'DtLineChart'
 })
 
-withDefaults(defineProps<DtBaseProps>(), {
+const props = withDefaults(defineProps<DtBaseProps>(), {
   width: '100%',
   height: '300px',
   autoResize: true
