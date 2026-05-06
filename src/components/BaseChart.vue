@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch, nextTick, computed } from 'vue'
 import * as echarts from 'echarts'
 import type { EChartsOption } from 'echarts'
 import { merge } from 'lodash-es'
@@ -180,10 +180,12 @@ onMounted(() => {
   })
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
   resizeObserver?.disconnect()
+  resizeObserver = null
   chartInstance?.dispose()
+  chartInstance = null
 })
 
 watch(
