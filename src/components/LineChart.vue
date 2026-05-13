@@ -18,7 +18,7 @@ defineOptions({
   name: 'DtLineChart'
 })
 
-const props = withDefaults(defineProps<DtBaseProps>(), {
+withDefaults(defineProps<DtBaseProps>(), {
   width: '100%',
   height: '300px',
   autoResize: true

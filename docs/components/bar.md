@@ -3,7 +3,7 @@ title: BarChart 柱状图
 ---
 
 <script setup>
-import { BarChart } from 'vue3-echarts-charts'
+import { DtBarChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
@@ -18,11 +18,11 @@ const chartData = {
 
 ## 基础用法
 
-<BarChart :option="chartData" />
+<DtBarChart :option="chartData" />
 
 ```vue
 <script setup>
-import { BarChart } from 'vue3-echarts-charts'
+import { DtBarChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
@@ -34,7 +34,7 @@ const chartData = {
 </script>
 
 <template>
-  <BarChart :option="chartData" />
+  <DtBarChart :option="chartData" />
 </template>
 ```
 

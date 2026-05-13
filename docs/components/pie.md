@@ -3,7 +3,7 @@ title: PieChart 饼图
 ---
 
 <script setup>
-import { PieChart } from 'vue3-echarts-charts'
+import { DtPieChart } from 'vue3-echarts-charts'
 
 const chartData = {
   series: [
@@ -26,11 +26,11 @@ const chartData = {
 
 ## 基础用法
 
-<PieChart :option="chartData" />
+<DtPieChart :option="chartData" />
 
 ```vue
 <script setup>
-import { PieChart } from 'vue3-echarts-charts'
+import { DtPieChart } from 'vue3-echarts-charts'
 
 const chartData = {
   series: [
@@ -50,7 +50,7 @@ const chartData = {
 </script>
 
 <template>
-  <PieChart :option="chartData" />
+  <DtPieChart :option="chartData" />
 </template>
 ```
 

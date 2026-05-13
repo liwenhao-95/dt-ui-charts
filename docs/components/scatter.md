@@ -3,7 +3,7 @@ title: ScatterChart 散点图
 ---
 
 <script setup>
-import { ScatterChart } from 'vue3-echarts-charts'
+import { DtScatterChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { type: 'value', scale: true },
@@ -25,11 +25,11 @@ const chartData = {
 
 ## 基础用法
 
-<ScatterChart :option="chartData" />
+<DtScatterChart :option="chartData" />
 
 ```vue
 <script setup>
-import { ScatterChart } from 'vue3-echarts-charts'
+import { DtScatterChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { type: 'value', scale: true },
@@ -48,7 +48,7 @@ const chartData = {
 </script>
 
 <template>
-  <ScatterChart :option="chartData" />
+  <DtScatterChart :option="chartData" />
 </template>
 ```
 

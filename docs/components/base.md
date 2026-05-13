@@ -3,7 +3,7 @@ title: BaseChart 基础图表
 ---
 
 <script setup>
-import { BaseChart } from 'vue3-echarts-charts'
+import { DtBaseChart } from 'vue3-echarts-charts'
 
 const chartOption = {
   tooltip: { trigger: 'axis' },
@@ -23,11 +23,11 @@ const chartOption = {
 
 ## 基础用法
 
-<BaseChart :option="chartOption" />
+<DtBaseChart :option="chartOption" />
 
 ```vue
 <script setup>
-import { BaseChart } from 'vue3-echarts-charts'
+import { DtBaseChart } from 'vue3-echarts-charts'
 
 const chartOption = {
   tooltip: { trigger: 'axis' },
@@ -44,7 +44,7 @@ const chartOption = {
 </script>
 
 <template>
-  <BaseChart :option="chartOption" />
+  <DtBaseChart :option="chartOption" />
 </template>
 ```
 

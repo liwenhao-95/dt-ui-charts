@@ -3,7 +3,7 @@ title: LineChart 折线图
 ---
 
 <script setup>
-import { LineChart } from 'vue3-echarts-charts'
+import { DtLineChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
@@ -18,11 +18,11 @@ const chartData = {
 
 ## 基础用法
 
-<LineChart :option="chartData" />
+<DtLineChart :option="chartData" />
 
 ```vue
 <script setup>
-import { LineChart } from 'vue3-echarts-charts'
+import { DtLineChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
@@ -34,7 +34,7 @@ const chartData = {
 </script>
 
 <template>
-  <LineChart :option="chartData" />
+  <DtLineChart :option="chartData" />
 </template>
 ```
 

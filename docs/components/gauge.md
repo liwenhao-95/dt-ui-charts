@@ -3,7 +3,7 @@ title: GaugeChart 仪表盘
 ---
 
 <script setup>
-import { GaugeChart } from 'vue3-echarts-charts'
+import { DtGaugeChart } from 'vue3-echarts-charts'
 
 const chartData = {
   series: [
@@ -21,11 +21,11 @@ const chartData = {
 
 ## 基础用法
 
-<GaugeChart :option="chartData" />
+<DtGaugeChart :option="chartData" />
 
 ```vue
 <script setup>
-import { GaugeChart } from 'vue3-echarts-charts'
+import { DtGaugeChart } from 'vue3-echarts-charts'
 
 const chartData = {
   series: [
@@ -40,7 +40,7 @@ const chartData = {
 </script>
 
 <template>
-  <GaugeChart :option="chartData" />
+  <DtGaugeChart :option="chartData" />
 </template>
 ```
 

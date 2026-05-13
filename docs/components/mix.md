@@ -3,7 +3,7 @@ title: MixChart 折柱混合图
 ---
 
 <script setup>
-import { MixChart } from 'vue3-echarts-charts'
+import { DtMixChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
@@ -18,11 +18,11 @@ const chartData = {
 
 ## 基础用法
 
-<MixChart :option="chartData" />
+<DtMixChart :option="chartData" />
 
 ```vue
 <script setup>
-import { MixChart } from 'vue3-echarts-charts'
+import { DtMixChart } from 'vue3-echarts-charts'
 
 const chartData = {
   xAxis: { data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'] },
@@ -34,7 +34,7 @@ const chartData = {
 </script>
 
 <template>
-  <MixChart :option="chartData" />
+  <DtMixChart :option="chartData" />
 </template>
 ```
 
