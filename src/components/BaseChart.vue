@@ -158,6 +158,10 @@ const initChart = () => {
 
   chartInstance = echarts.init(chartRef.value, props.theme)
   chartInstance.setOption(mergedOption.value)
+
+  if (props.loading) {
+    chartInstance.showLoading()
+  }
 }
 
 const updateChart = () => {
