@@ -22,13 +22,15 @@ interface Props {
   width?: string
   height?: string
   autoResize?: boolean
+  loading?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   theme: 'default',
   width: '100%',
   height: '300px',
-  autoResize: true
+  autoResize: true,
+  loading: false
 })
 
 const chartRef = ref<HTMLDivElement>()
@@ -143,7 +145,12 @@ const mergedOption = computed<EChartsOption>(() => {
   )
   const axisOption = hasNoAxis ? { xAxis: { show: false }, yAxis: { show: false } } : {}
 
-  return merge({}, defaultConfig, titleOption, axisOption, typeOption, props.option || {})
+  // 检查是否有 dataZoom，如果有则调整 grid.bottom 防止遮挡
+  const dataZoom = props.option?.dataZoom
+  const hasDataZoom = Array.isArray(dataZoom) ? dataZoom.length > 0 : !!dataZoom
+  const gridOption = hasDataZoom ? { grid: { bottom: '20%' } } : {}
+
+  return merge({}, defaultConfig, titleOption, axisOption, typeOption, props.option || {}, gridOption)
 })
 
 const initChart = () => {
@@ -200,6 +207,15 @@ watch(
     })
   },
   { deep: true }
+)
+
+watch(
+  () => props.loading,
+  (isLoading) => {
+    if (chartInstance) {
+      isLoading ? chartInstance.showLoading() : chartInstance.hideLoading()
+    }
+  }
 )
 </script>
 

@@ -19,13 +19,13 @@ import GaugeChart from './components/GaugeChart.vue'
 import MixChart from './components/MixChart.vue'
 
 const install = (app: App) => {
-  app.component('BaseChart', BaseChart)
-  app.component('LineChart', LineChart)
-  app.component('BarChart', BarChart)
-  app.component('PieChart', PieChart)
-  app.component('ScatterChart', ScatterChart)
-  app.component('GaugeChart', GaugeChart)
-  app.component('MixChart', MixChart)
+  app.component('DtBaseChart', BaseChart)
+  app.component('DtLineChart', LineChart)
+  app.component('DtBarChart', BarChart)
+  app.component('DtPieChart', PieChart)
+  app.component('DtScatterChart', ScatterChart)
+  app.component('DtGaugeChart', GaugeChart)
+  app.component('DtMixChart', MixChart)
 }
 
 export default { install }
